@@ -7,6 +7,7 @@ The project focuses on **clarity, simplicity, clean code, and real backend logic
 ---
 
 ## ✨ Features
+<img width="591" height="854" alt="image" src="https://github.com/user-attachments/assets/47e83e54-9bb3-4565-a132-874709d48bca" />
 
 ### 🎮 Game
 - 9×9 Sudoku board with 3×3 visual blocks
@@ -103,7 +104,7 @@ Install dependencies
 
 4. Run the application
 
-Run the application
+python app.py
 
 5. Open your browser at
 
@@ -125,6 +126,11 @@ Real authentication flow
 Thoughtful UX decisions
 
 Maintainable and readable code
+
+<img width="591" height="854" alt="image" src="https://github.com/user-attachments/assets/4ca38c10-e764-41dd-b337-c120b7fa2c6f" />
+<img width="585" height="557" alt="image" src="https://github.com/user-attachments/assets/96d39ee0-99cb-4241-87b7-befa22f38470" />
+<img width="600" height="764" alt="image" src="https://github.com/user-attachments/assets/c1bb0b6e-f034-4872-b4f6-f1bfac1a78d5" />
+
 
 
 👨‍💻 Author
