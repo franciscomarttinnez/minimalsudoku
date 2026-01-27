@@ -1,0 +1,422 @@
+/* ─────────────────────────────
+   VARIABLES
+───────────────────────────── */
+
+:root {
+    --blue-primary: #2f80ed;
+    --blue-hover: #1c6ed5;
+    --blue-light: #eaf2ff;
+
+    --yellow-accent: #ffd166;
+
+    --gray-border: #d0d7e2;
+    --gray-text: #2f2f2f;
+    --white: #ffffff;
+}
+
+/* ─────────────────────────────
+   RESET & BASE
+───────────────────────────── */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* 🚫 elimina scroll fantasma */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(
+        180deg,
+        #004299 0%,
+        #006aff 45%,
+        #4a96ff 100%
+    );
+    color: var(--gray-text);
+    user-select: none; /* 🚫 nada seleccionable */
+}
+
+/* ─────────────────────────────
+   CENTERING WRAPPER (CLAVE)
+───────────────────────────── */
+
+.page-center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ─────────────────────────────
+   GAME & MENU CONTAINERS
+───────────────────────────── */
+
+.game-container,
+.menu-container {
+    width: 100%;
+    max-width: 520px;
+    padding: 32px;
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+/* ─────────────────────────────
+   HEADERS
+───────────────────────────── */
+
+.game-header h1 {
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.menu-title {
+    font-size: 42px; /* 🔥 bien grande */
+    margin-bottom: 36px;
+}
+
+/* ─────────────────────────────
+   GAME STATS
+───────────────────────────── */
+
+.game-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* ─────────────────────────────
+   SUDOKU BOARD
+───────────────────────────── */
+
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    aspect-ratio: 1 / 1;
+    border: 3px solid var(--gray-border);
+    margin: 0 auto;
+}
+
+.cell {
+    border: 1px solid var(--gray-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.cell.fixed {
+    background-color: var(--blue-light);
+    font-weight: 600;
+}
+
+.cell.editable {
+    background-color: var(--white);
+}
+
+/* 3x3 separators */
+
+.cell:nth-child(3n) {
+    border-right: 3px solid var(--gray-border);
+}
+
+.cell:nth-child(n + 19):nth-child(-n + 27),
+.cell:nth-child(n + 46):nth-child(-n + 54) {
+    border-bottom: 3px solid var(--gray-border);
+}
+
+/* ─────────────────────────────
+   NUMBER SELECTOR
+───────────────────────────── */
+
+.number-selector {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.number-btn {
+    padding: 16px 0;
+    font-size: 20px;
+    border-radius: 14px;
+    border: none;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+}
+
+.number-btn.selected {
+    background-color: var(--blue-primary);
+    color: var(--white);
+    box-shadow: inset 0 0 0 3px var(--yellow-accent);
+}
+
+/* ─────────────────────────────
+   BACK BUTTON
+───────────────────────────── */
+
+.back-btn {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 16px;
+    border-radius: 14px;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* ─────────────────────────────
+   MAIN MENU
+───────────────────────────── */
+
+.menu-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.menu-btn {
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 16px;
+    text-decoration: none;
+}
+
+.menu-btn.primary {
+    background-color: var(--blue-primary);
+    color: var(--white);
+}
+
+.menu-btn.secondary {
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+}
+
+.difficulty{
+    margin-top: 18px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+}
+
+.menu-btn.light {
+    background-color: var(--white);
+    color: var(--blue-primary);
+    border: 2px solid var(--blue-light);
+}
+
+.menu-links {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.menu-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--blue-primary);
+}
+
+/* ─────────────────────────────
+   HOVER (PC)
+───────────────────────────── */
+
+@media (hover: hover) and (pointer: fine) {
+    .number-btn:hover,
+    .menu-btn:hover,
+    .back-btn:hover,
+    .auth-btn:hover {
+        background-color: var(--blue-hover);
+        color: var(--white);
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    .stat-card:hover {
+        transform: scale(1.03);
+    }
+
+    .cell.editable:hover {
+        background-color: #eef4ff;
+        cursor: pointer;
+    }
+}
+
+.number-btn,
+.menu-btn,
+.back-btn,
+.auth-btn,
+.stat-card {
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+
+/* ─────────────────────────────
+   TAP (MOBILE)
+───────────────────────────── */
+
+@media (hover: none) {
+    .number-btn:active,
+    .menu-btn:active,
+    .back-btn:active {
+        background-color: var(--blue-hover);
+        color: var(--white);
+    }
+
+    .cell.editable:active {
+        background-color: #eef4ff;
+    }
+}
+
+/* ─────────────────────────────
+   RESPONSIVE
+───────────────────────────── */
+
+@media (max-width: 480px) {
+    .game-container,
+    .menu-container {
+        border-radius: 0;
+        height: 100%;
+        max-width: 100%;
+    }
+
+    .game-stats {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+.hidden {
+    display: none !important;
+}
+/* ─────────────────────────────
+   AUTH (LOGIN / REGISTER)
+───────────────────────────── */
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 36px;
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.auth-title {
+    font-size: 40px;
+    margin-bottom: 32px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-form input {
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid var(--gray-border);
+    outline: none;
+}
+
+.auth-form input:focus {
+    border-color: var(--blue-primary);
+}
+
+.auth-btn {
+    margin-top: 12px;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 14px;
+    border: none;
+    background-color: var(--blue-primary);
+    color: var(--white);
+}
+
+.auth-error {
+    background-color: #ffeaea;
+    color: #b00020;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.auth-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--blue-primary);
+    text-decoration: none;
+}
+/* ─────────────────────────────
+   STATS PAGE
+───────────────────────────── */
+
+.stats-container {
+    width: 100%;
+    max-width: 560px;
+    padding: 36px;
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.stats-title {
+    font-size: 40px;
+    margin-bottom: 32px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background-color: var(--blue-light);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stat-card.full {
+    grid-column: span 2;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #555;
+}
+
+.stat-value {
+    font-size: 26px;
+    font-weight: 600;
+}
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card.full {
+        grid-column: span 1;
+    }
+}

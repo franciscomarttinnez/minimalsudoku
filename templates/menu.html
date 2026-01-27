@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal Sudoku - Main Menu</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<div class="page-center">
+
+<div class="menu-container">
+
+    <h1 class="menu-title">Sudoku</h1>
+
+    <div class="menu-actions">
+
+        {% if has_active_game %}
+            <a href="/game" class="menu-btn primary">Continue Game</a>
+        {% endif %}
+
+        <a href="#" id="new-game-btn" class="menu-btn secondary">
+            New Game
+        </a>
+
+        <div id="difficulty-selector" class="difficulty hidden">
+            <a href="/new-game/easy" class="menu-btn dif-btn light">Easy</a>
+            <a href="/new-game/medium" class="menu-btn dif-btn light">Medium</a>
+            <a href="/new-game/hard" class="menu-btn dif-btn light">Hard</a>
+        </div>
+
+    </div>
+
+    <div class="menu-links">
+        <a href="/stats" class="menu-link">Statistics</a>
+        <a href="/logout" class="menu-link">Logout</a>
+    </div>
+
+</div>
+</div>
+<script src="/static/js/menu.js"></script>
+
+</body>
+</html>

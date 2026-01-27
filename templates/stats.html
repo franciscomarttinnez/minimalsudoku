@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal Sudoku - Stats</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<div class="page-center">
+    <div class="stats-container">
+
+        <h1 class="stats-title">Statistics</h1>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <span class="stat-label">Games Played</span>
+                <span class="stat-value">{{ stats.games_started }}</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Games Won</span>
+                <span class="stat-value">{{ stats.games_won }}</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Win Rate</span>
+                <span class="stat-value">{{ win_rate }}%</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Perfect Wins</span>
+                <span class="stat-value">{{ stats.perfect_wins }}</span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Best Time</span>
+                <span class="stat-value">
+                    {% if stats.best_time %}
+                        {{ stats.best_time }}s
+                    {% else %}
+                        —
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Best Score</span>
+                <span class="stat-value">
+                    {% if stats.best_score %}
+                        {{ stats.best_score }}
+                    {% else %}
+                        —
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="stat-card full">
+                <span class="stat-label">Total Score</span>
+                <span class="stat-value">{{ stats.total_score }}</span>
+            </div>
+
+        </div>
+
+        <a href="/menu" class="back-btn">Back to menu</a>
+
+    </div>
+</div>
+
+</body>
+</html>
