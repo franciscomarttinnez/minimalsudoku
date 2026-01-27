@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("error-count").textContent = INITIAL_ERRORS;
     document.getElementById("time-counter").textContent = seconds;
 
-    // ⏱️ TIMER — SOLO UNA VEZ
     timerInterval = setInterval(() => {
         seconds++;
         document.getElementById("time-counter").textContent = seconds;

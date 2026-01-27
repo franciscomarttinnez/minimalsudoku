@@ -9,9 +9,6 @@ app.secret_key = "super-secret-key"
 
 DATABASE = "database.db"
 
-# ─────────────────────────────
-# DATABASE HELPERS
-# ─────────────────────────────
 
 def get_db():
     conn = sqlite3.connect(
@@ -73,9 +70,7 @@ def get_active_game(user_id):
     db.close()
     return game
 
-# ─────────────────────────────
-# VALIDATIONS
-# ─────────────────────────────
+
 
 def is_valid_username(username):
     return 6 <= len(username) <= 20 and username.isalnum()
@@ -84,9 +79,7 @@ def is_valid_username(username):
 def is_valid_password(password):
     return 8 <= len(password) <= 16 and password.isalnum()
 
-# ─────────────────────────────
-# SUDOKU LOGIC
-# ─────────────────────────────
+
 
 DIFFICULTY_LEVELS = {
     "easy": 40,
@@ -175,9 +168,7 @@ def is_block_complete(board, row, col):
                 return False
     return True
 
-# ─────────────────────────────
-# ROUTES — AUTH
-# ─────────────────────────────
+
 
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -254,9 +245,7 @@ def logout():
     session.clear()
     return redirect(url_for("login"))
 
-# ─────────────────────────────
-# ROUTES — GAME
-# ─────────────────────────────
+
 
 @app.route("/menu")
 def menu():
@@ -323,7 +312,7 @@ def play():
         errors = game["errors"]
         score = game["score"]
 
-        # ✔ Número correcto
+
         if solution[row][col] == value:
             board[row][col] = value
             score_delta = POINTS["correct_number"]
@@ -379,7 +368,6 @@ def play():
             db.commit()
             return {"status": "ok", "score": score_delta}
 
-        # ❌ Error
         errors += 1
         score += POINTS["error_penalty"]
 
@@ -501,7 +489,7 @@ def finish_game():
 
     return {"status": "ok"}
 
-# ─────────────────────────────
+
 
 if __name__ == "__main__":
     init_db()
