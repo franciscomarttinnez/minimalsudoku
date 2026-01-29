@@ -4,6 +4,7 @@ A complete and modern Sudoku web application built with a **minimal full-stack a
 
 The project focuses on **clarity, simplicity, clean code, and real backend logic**, avoiding unnecessary technologies or overengineering.
 
+Deployed on Render: https://minimalsudoku.onrender.com
 ---
 
 ## ✨ Features
